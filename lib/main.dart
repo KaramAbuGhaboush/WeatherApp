@@ -4,20 +4,22 @@ import 'package:flutter_application_2/homepage.dart';
 import 'package:flutter_application_2/hourly_weather.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  MainApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Main App',
       home: Home(),
-      routes:{
-
+      routes: {
+        'home': (context) => Home(),
+        'hour':(context) => const HourlyWeather(),
+        'day':(context) => const DailyWeather()
       },
     );
   }
