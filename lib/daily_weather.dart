@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/daily_forecast.dart';
+import 'package:flutter_application_2/drawer.dart';
 import 'dart:convert';
 import 'package:intl/intl.dart';
 
@@ -25,6 +26,7 @@ class _DailyWeatherState extends State<DailyWeather> {
       appBar: AppBar(
         title: const Text('Daily Weather'),
       ),
+      drawer: CustomDrawer(),
       body: Center(
         child: FutureBuilder(
           future: getData(),

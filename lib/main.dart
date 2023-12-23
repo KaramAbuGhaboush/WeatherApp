@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/daily_weather.dart';
+import 'package:flutter_application_2/homepage.dart';
 import 'package:flutter_application_2/hourly_weather.dart';
 
 void main() {
@@ -13,7 +15,10 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Main App',
-      home: HourlyWeather(),
+      home: Home(),
+      routes:{
+
+      },
     );
   }
 }

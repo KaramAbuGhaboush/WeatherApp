@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/drawer.dart';
 import 'package:flutter_application_2/hourly_forecast.dart';
 
 class HourlyWeather extends StatefulWidget {
@@ -15,6 +16,7 @@ class _HourlyWeatherState extends State<HourlyWeather> {
       appBar: AppBar(
         title: const Text('Hourly Weather'),
       ),
+      drawer: CustomDrawer(),
       body: Center(
         child: FutureBuilder(
           future: FetchHourlyData.getData('Jerusalem'),

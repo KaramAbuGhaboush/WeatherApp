@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/drawer.dart';
 import 'package:flutter_application_2/test.dart';
 
-class Haitham extends StatefulWidget {
-  const Haitham({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<Haitham> createState() => _HaithamState();
+  State<Home> createState() => _HomeState();
 }
 
-class _HaithamState extends State<Haitham> {
+class _HomeState extends State<Home> {
   WeatherData? weatherData;
 
   @override
@@ -17,6 +18,7 @@ class _HaithamState extends State<Haitham> {
       appBar: AppBar(
         title: const Text('Haitham'),
       ),
+      drawer: CustomDrawer(),
       body: Center(
         child: FutureBuilder(
           future: FetchData('Jerusalem').getData(),
