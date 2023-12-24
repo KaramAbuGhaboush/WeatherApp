@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/daily_weather.dart';
 import 'package:flutter_application_2/homepage.dart';
 import 'package:flutter_application_2/hourly_weather.dart';
+import 'package:flutter_application_2/places_service.dart';
 
-void main() {
+main() {
   runApp(const MainApp());
 }
 
@@ -19,7 +20,8 @@ class MainApp extends StatelessWidget {
       routes: {
         'home': (context) => const Home(),
         'hour': (context) => const HourlyWeather(),
-        'day': (context) => const DailyWeather()
+        'day': (context) => const DailyWeather(),
+        'city': (context) => const PlacesScreen(),
       },
     );
   }

@@ -24,19 +24,22 @@ class FetchHourlyData {
 class HourlyForecast {
   String? time;
   String? icon;
-  String? temp;
+  double? temp;
+  String? condition;
 
   HourlyForecast({
     required this.time,
     required this.icon,
     required this.temp,
+    required this.condition,
   });
 
   factory HourlyForecast.fromJson(Map<String, dynamic> json) {
     return HourlyForecast(
       time: json['time'],
       icon: json['condition']['icon'],
-      temp: json['temp_c'].toString(),
+      temp: json['temp_c'],
+      condition: json['condition']['text'],
     );
   }
 }
