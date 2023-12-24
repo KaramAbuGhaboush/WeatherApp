@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/city.dart';
+import 'package:flutter_application_2/constants.dart';
 import 'package:flutter_application_2/drawer.dart';
 import 'package:flutter_application_2/test.dart';
 
@@ -14,46 +16,57 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    Constants constants = Constants();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Haitham'),
+        title: const Text('MainPage'),
       ),
-      drawer: CustomDrawer(),
+      drawer: const CustomDrawer(),
       body: Center(
         child: FutureBuilder(
-          future: FetchData('Jerusalem').getData(),
+          future: FetchData.getData(City().getName()),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              weatherData = snapshot.data as WeatherData?;
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    weatherData!.location,
-                    style: const TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    weatherData!.temp,
-                    style: const TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    weatherData!.condition,
-                    style: const TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    weatherData!.wind,
-                    style: const TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    weatherData!.humidity,
-                    style: const TextStyle(fontSize: 30),
-                  ),
-                ],
+              weatherData = snapshot.data as WeatherData;
+              return Container(
+                height: 700,
+                width: 500,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: constants.blackColor, width: 5),
+                  gradient: constants.linearGradientBlue,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      weatherData!.location,
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                    Image.network('https:${weatherData!.icon}'
+                        .replaceAll('64x64', '128x128')),
+                    Text(
+                      weatherData!.temp,
+                      style: const TextStyle(fontSize: 60),
+                    ),
+                    Text(
+                      weatherData!.condition,
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                    Text(
+                      'wind: ${weatherData!.wind}',
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                    Text(
+                      'humidity: ${weatherData!.humidity}',
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                  ],
+                ),
               );
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
+            } else {
+              return const CircularProgressIndicator();
             }
-            return const CircularProgressIndicator();
           },
         ),
       ),

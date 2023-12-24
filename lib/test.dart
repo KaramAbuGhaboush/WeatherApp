@@ -2,8 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class FetchData {
-  String city = '';
-  Future<WeatherData> getData() async {
+  static Future<WeatherData> getData(String city) async {
     String apiKey = 'a6e99024bdeb42808ad140441231911';
     final response = await http.get(Uri.parse(
         'https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$city&days=1&aqi=no&alerts=no'));
@@ -13,13 +12,10 @@ class FetchData {
       throw Exception('Failed to load data');
     }
   }
-
-  FetchData(String cityParameter) {
-    city = cityParameter;
-  }
 }
 
 class WeatherData {
+  String icon;
   String location;
   String temp;
   String condition;
@@ -27,6 +23,7 @@ class WeatherData {
   String humidity;
 
   WeatherData({
+    required this.icon,
     required this.location,
     required this.temp,
     required this.condition,
@@ -36,6 +33,7 @@ class WeatherData {
 
   factory WeatherData.fromJson(Map<String, dynamic> json) {
     return WeatherData(
+      icon: json['current']['condition']['icon'],
       location: json['location']['name'],
       temp: json['current']['temp_c'].toString(),
       condition: json['current']['condition']['text'],

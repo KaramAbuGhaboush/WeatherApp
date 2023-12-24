@@ -11,57 +11,61 @@ class _drawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Container(
-        child: ListView(children: [
+      child: ListView(
+        children: [
           Container(
-            padding: EdgeInsets.all(15),
-            child: Text("Weather app" , style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20 , color: Colors.white),),
+            padding: const EdgeInsets.all(15),
             height: 150,
             color: Colors.blue,
+            child: const Text(
+              "Weather app",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.white),
+            ),
           ),
-
           Container(
-            padding: EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15),
             child: MaterialButton(
               textColor: Colors.black,
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushReplacementNamed("home");
               },
-              child: Text("Home"),
+              child: const Text("Home"),
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15),
             child: MaterialButton(
               textColor: Colors.black,
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushReplacementNamed("hour");
               },
-              child: Text("Hourli Forecast"),
+              child: const Text("Hourly Forecast"),
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15),
             child: MaterialButton(
               textColor: Colors.black,
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushReplacementNamed("day");
               },
-              child: Text("Daily Forecast"),
+              child: const Text("Daily Forecast"),
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15),
             child: MaterialButton(
               textColor: Colors.black,
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushReplacementNamed("city");
               },
-              child: Text("Places"),
+              child: const Text("Places"),
             ),
           ),
         ],
-        ),
       ),
     );
   }
